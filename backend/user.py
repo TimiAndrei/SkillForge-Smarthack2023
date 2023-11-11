@@ -52,9 +52,11 @@ class user:
         return self.password == password
 
     def addQuest(self, quest):
-        questList.append(quest)
+        self.questList.append(quest)
+
     def addSkill(self, skill):
         self.skillList.append(skill)
+        
     def finishTask(self, task, percentage=100):
         if self.lastFinished == date.today() + timedelta(days=-1):
             self.streak += 1

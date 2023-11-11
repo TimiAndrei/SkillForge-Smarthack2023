@@ -51,18 +51,27 @@ img{
     height: 30vh;
     width: 15vw;
     border-radius: 50%;
-    background: conic-gradient(rgb(41, 79, 28) 0.00% 50%, rgb(171, 161, 27) 50.00% 85% , rgb(139, 7, 7) 85% 100%);
+    background: conic-gradient(#124928 0.00% 50%, #997404 50.00% 85% , #7b275f 85% 100%);
     margin-left: 5vw;
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
 
+.hole{
+    background-color: #17082e;
+    width: 11vw;
+    height: 22vh;
+    border-radius: 50%;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+
+}
 .month{
     background-color: black;
     width: 30vw;
     height: 50px;
-    color: white;
     display: flex;
     justify-content: center;
     align-items: center;

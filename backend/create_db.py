@@ -20,8 +20,6 @@ def main():
                 lastFinished DATE,
                 streak INTEGER,
                 level INTEGER,
-                skillList TEXT,
-                questList TEXT,
                 needApproval INTEGER
             );
         ''')
@@ -35,7 +33,6 @@ def main():
                 questLogID INTEGER PRIMARY KEY AUTOINCREMENT,
                 name TEXT,
                 description TEXT,
-                skillList TEXT,
                 userID INTEGER,
                 FOREIGN KEY (userID) REFERENCES user (userID)
             );

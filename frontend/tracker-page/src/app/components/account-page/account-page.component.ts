@@ -12,6 +12,9 @@ import { HttpClient } from '@angular/common/http';
 
 
 export class AccountPageComponent implements OnInit {
+
+  constructor(private http: HttpClient, private router: Router) { }
+
   apiURL = 'http://127.0.0.1:5000/api/test';
   responseData: any;
 
@@ -19,12 +22,6 @@ export class AccountPageComponent implements OnInit {
   level: number = 1;
   picture: string = 'https://i.pravatar.cc/300';
 
-  constructor(private http: HttpClient , private router: Router) { }
-
-  goToDashboard() {
-    this.router.navigate(['/dashbooard']);
-    alert('Dashboard');
-        
   ngOnInit(): void {
     this.http.get(this.apiURL)
       .subscribe((data: any) => {
@@ -32,9 +29,11 @@ export class AccountPageComponent implements OnInit {
         console.log(this.responseData);
       });
   }
+
+  goToDashboard() {
+    this.router.navigate(['/dashbooard']);
+    alert('Dashboard');
+  }
 }
-
-
-
 
 

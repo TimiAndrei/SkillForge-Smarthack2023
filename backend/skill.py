@@ -37,6 +37,9 @@ class skill:
     def isDone(self):
         return self.points != 0
 
+    def _repr_(self):
+        return self.name 
+
     def getSkill(self):
         skillDict = {
             "name": self.name,

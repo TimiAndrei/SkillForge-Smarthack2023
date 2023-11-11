@@ -8,6 +8,7 @@ import { AccountPageComponent } from './components/account-page/account-page.com
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    NgChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

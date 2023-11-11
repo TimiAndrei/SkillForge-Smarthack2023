@@ -14,7 +14,6 @@ import { HttpClient } from '@angular/common/http';
 
 export class AccountPageComponent implements OnInit {
 
-  constructor(private http: HttpClient, private router: Router) { }
 
   apiURL = 'http://127.0.0.1:5000/api/test';
   responseData: any;

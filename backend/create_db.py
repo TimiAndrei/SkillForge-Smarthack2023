@@ -1,5 +1,6 @@
 import sqlite3
 
+
 def main():
     conn = sqlite3.connect('SHDB.db')
     cursor = conn.cursor()
@@ -8,11 +9,13 @@ def main():
             DROP TABLE IF EXISTS user;
     ''')
 
-    cursor.execute('''            
+    cursor.execute('''
             CREATE TABLE user (
                 userID INTEGER PRIMARY KEY AUTOINCREMENT,
                 firstName TEXT,
                 lastName TEXT,
+                email TEXT UNIQUE,
+                password TEXT,
                 accountName TEXT UNIQUE,
                 organization TEXT,
                 friendsList TEXT,
@@ -20,8 +23,6 @@ def main():
                 lastFinished DATE,
                 streak INTEGER,
                 level INTEGER,
-                skillList TEXT,
-                questList TEXT,
                 needApproval INTEGER
             );
         ''')
@@ -64,6 +65,7 @@ def main():
 
     conn.commit()
     conn.close()
+
 
 if __name__ == '__main__':
     main()

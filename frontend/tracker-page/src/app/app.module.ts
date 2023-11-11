@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { AccountPageComponent } from './components/account-page/account-page.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { LoginComponent } from './components/login/login.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccountPageComponent,
-    LoginComponent
+    LoginComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

@@ -9,7 +9,7 @@ class skill:
         "Hard": 3
     }
 
-    def __init__(self, name="Default Name", category="Default Category", difficulty=1, description="Default Description", deadline=date.today(), creationDate=date.today(), points=0):
+    def __init__(self, name="Default Name", category="Default Category", difficulty=1, description="Default Description", deadline=date.today(), creationDate=date.today(), points=0, approval = 0):
         self.name = name
         self.category = category
         self.difficulty = difficulty
@@ -17,6 +17,7 @@ class skill:
         self.deadline = deadline
         self.creationDate = creationDate
         self.points = points
+        self.approval = approval
 
         print("Created Skill " + self.name)
 
@@ -36,6 +37,8 @@ class skill:
         return self.points
     def isDone(self):
         return self.points != 0
+    def approve(self):
+        self.approval = 1
 
     def _repr_(self):
         return self.name 

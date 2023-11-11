@@ -15,4 +15,4 @@ The theme of this hackathon is Skill Tracking -> build any skill tracking applic
 * Roadmap and implementation priorities
 * Monetization
 * How roles are divided in the team
-* Winners take Fit-Bits
+* Winners take Fit-

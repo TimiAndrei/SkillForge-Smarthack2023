@@ -1,3 +1,4 @@
+import { RouterModule, Routes, Router } from '@angular/router';
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -18,8 +19,12 @@ export class AccountPageComponent implements OnInit {
   level: number = 1;
   picture: string = 'https://i.pravatar.cc/300';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient , private router: Router) { }
 
+  goToDashboard() {
+    this.router.navigate(['/dashbooard']);
+    alert('Dashboard');
+        
   ngOnInit(): void {
     this.http.get(this.apiURL)
       .subscribe((data: any) => {

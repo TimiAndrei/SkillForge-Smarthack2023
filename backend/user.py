@@ -5,10 +5,12 @@ from questlog import questLog
 class user:
     levelThreshold = 6
 
-    def __init__(self, fName, lName, accountName, organization, friendsList=[], points=0, lastFinished = date.today() + timedelta(days=-2), streak = 0, level=0, skillList=[], questList=[], needApproval = 0):
+    def __init__(self, fName, lName, accountName, password, email, organization, friendsList=[], points=0, lastFinished = date.today() + timedelta(days=-2), streak = 0, level=0, skillList=[], questList=[], needApproval = 0):
         self.fName = fName
         self.lName = lName
         self.accountName = accountName
+        self.password = password
+        self.email = email
         self.organization = organization
         self.friendsList = friendsList
         self.points = points
@@ -33,6 +35,8 @@ class user:
         return self.streak
     def getLevel(self):
         return self.level
+    def getEmail(self):
+        return self.email
     def getCategories(self):
         uniqueCategories = []
         for item in self.skillList:
@@ -44,10 +48,15 @@ class user:
         if self.lastFinished < date.today() + timedelta(days=-2):
             self.streak = 0
 
+    def authenticate(self, password):
+        return self.password == password
+
     def addQuest(self, quest):
-        questList.append(quest)
+        self.questList.append(quest)
+
     def addSkill(self, skill):
         self.skillList.append(skill)
+        
     def finishTask(self, task, percentage=100):
         if self.lastFinished == date.today() + timedelta(days=-1):
             self.streak += 1

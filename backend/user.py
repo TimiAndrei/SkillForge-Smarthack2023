@@ -3,7 +3,9 @@ from skill import skill
 from questlog import questLog
 
 class user:
-    def __init__(self, fName, lName, accountName, organization, friendsList=[], points=0, lastFinished = date.today() + timedelta(days=-2), streak = 0, skillList=[], questList=[], needApproval = 0):
+    levelThreshold = 6
+
+    def __init__(self, fName, lName, accountName, organization, friendsList=[], points=0, lastFinished = date.today() + timedelta(days=-2), streak = 0, level=0, skillList=[], questList=[], needApproval = 0):
         self.fName = fName
         self.lName = lName
         self.accountName = accountName
@@ -12,6 +14,7 @@ class user:
         self.points = points
         self.lastFinished = lastFinished
         self.streak = streak
+        self.level = level
         self.skillList = skillList
         self.questList = questList
         self.needApproval = needApproval
@@ -28,6 +31,8 @@ class user:
         return self.points
     def getStreak(self):
         return self.streak
+    def getLevel(self):
+        return self.level
     def resetStreak(self):
         if self.lastFinished < date.today() + timedelta(days=-2):
             self.streak = 0
@@ -45,4 +50,6 @@ class user:
             self.lastFinished = date.today()
         task.markAsDone(percentage)
         self.points += task.getPoints()
+
+        self.level = self.points / 6
 

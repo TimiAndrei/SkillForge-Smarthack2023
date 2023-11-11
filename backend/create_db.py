@@ -4,7 +4,7 @@ cursor = conn.cursor()
 
 cursor.execute('''
         CREATE TABLE IF NOT EXISTS user (
-            id INTEGER PRIMARY KEY,
+            userID INTEGER PRIMARY KEY,
             fName TEXT,
             lName TEXT,
             accountName TEXT,
@@ -23,7 +23,7 @@ cursor.execute('''
 # Function to create the Skill table
 cursor.execute('''
         CREATE TABLE IF NOT EXISTS skill (
-            id INTEGER PRIMARY KEY,
+            skillID INTEGER PRIMARY KEY,
             name TEXT,
             category TEXT,
             difficulty INTEGER,
@@ -31,16 +31,21 @@ cursor.execute('''
             deadline DATE,
             creationDate DATE,
             points INTEGER,
-            approval INTEGER
+            approval INTEGER,
+            FOREIGN KEY (questLogId)
+                REFERENCES questLog (questLogID)
+               
         )
     ''')
 
 cursor.execute('''
         CREATE TABLE IF NOT EXISTS questLog (
-            id INTEGER PRIMARY KEY,
+            questLogID INTEGER PRIMARY KEY,
             name TEXT,
             description TEXT,
-            skillList TEXT
+            skillList TEXT,
+            FOREIGN KEY (userID)
+                REFERENCES user (userID)
         )
     ''')
 

@@ -1,3 +1,6 @@
+from skill import skill
+from datetime import date, timedelta
+
 class questLog():
 
     def __init__(self, _name, _description = ""):
@@ -7,7 +10,8 @@ class questLog():
 
     def addSkill(self, skill):
         self.skillList.append(skill)
-    
+        return skill
+
     def removeSkill(self, skill):
         self.skillList.remove(skill)
 
@@ -19,10 +23,10 @@ class questLog():
         maxProgress = 0
         
         for currentSkill in self.skillList:
-            currentProgress += min(currentProgress.getDifficulty(), currentProgress.getPoints())
+            currentProgress += min(currentSkill.getDifficulty(), currentSkill.getPoints())
             maxProgress += currentSkill.getDifficulty() 
         
-        return currentProgress/maxProgress 
+        return 100 * currentProgress/maxProgress 
 
     def getDificultyPercentages(self):
         # percentages[0] represents the percentage of easy, but easy returns 1 point so difficulty - 1 = indice of percetages
@@ -42,7 +46,12 @@ class questLog():
 
         return percentages
     
+difficulty = {"easy":1, "medium":2, "hard":3}
+
 
 qlog = questLog("ciclism", "merg pe bicicleta si ma simt bine")
-qlog.addSkill("merg repede")
-print(qlog.name, qlog.description, qlog.getSkills())
+qlog.addSkill(skill("learn Smoke On The Water on guitar", "music", difficulty["easy"], "Most basic song", date.today() + timedelta(days=2), date.today() + timedelta(days=-2)))
+obj = qlog.addSkill(skill("write a cook-book", "cooking", difficulty["hard"], "a dream that must come true", date.today(), date.today() + timedelta(days=-10)))
+qlog.addSkill(skill("write another cook-book", "cooking", difficulty["hard"], "another dream that must come true", date.today(), date.today() + timedelta(days=-10)))
+qlog.removeSkill(obj)
+print(qlog.getSkills())

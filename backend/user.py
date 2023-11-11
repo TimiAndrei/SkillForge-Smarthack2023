@@ -33,6 +33,13 @@ class user:
         return self.streak
     def getLevel(self):
         return self.level
+    def getCategories(self):
+        uniqueCategories = []
+        for item in self.skillList:
+            if item.getCategory() not in uniqueCategories:
+                uniqueCategories.append(item.getCategory())
+
+        return uniqueCategories
     def resetStreak(self):
         if self.lastFinished < date.today() + timedelta(days=-2):
             self.streak = 0

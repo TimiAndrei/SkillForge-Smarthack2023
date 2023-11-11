@@ -1,0 +1,71 @@
+
+
+.navBar{
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+
+.navBarTitle{
+    width: 100%; 
+    height: 100%;
+    border: 1px white solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50vw;
+}
+
+h1,h2{
+    color: white; 
+    text-align: left;
+    font-size: 1em; 
+    padding-left:30px
+}
+
+
+img{
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%; 
+    margin-right: 30px;
+}
+
+
+.accountText{
+    width: 30vw;
+}
+
+
+.overviewContent{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    gap: 20px;
+}
+
+
+.pieChart {
+    height: 30vh;
+    width: 15vw;
+    border-radius: 50%;
+    background: conic-gradient(rgb(41, 79, 28) 0.00% 50%, rgb(171, 161, 27) 50.00% 85% , rgb(139, 7, 7) 85% 100%);
+    margin-left: 5vw;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+
+
+}
+
+.month{
+    background-color: black;
+    width: 30vw;
+    height: 50px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+
+}

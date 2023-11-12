@@ -11,13 +11,12 @@ from flask_cors import CORS
 import bcrypt
 import sqlite3
 import jwt
-from jwt import encode  # need to install pyjwt
-import user
+from user import user
 
 app = Flask(__name__)
 CORS(app)
 
-currentUser = User()
+currentUser = user('admin', 'admin', 'admin', 'admin', 'admin', 'admin')
 
 
 def getDB():
@@ -103,6 +102,34 @@ def register_user():
         conn.close()
 
         return jsonify({"success": True, "message": "User registered successfully"})
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)})
+
+
+@app.route("/api/login", methods=["POST"])
+def login():
+    try:
+        data = request.json
+        accountName = data.get("accountName")
+        password = data.get("password")
+
+        conn, cursor = getDB()
+
+        cursor.execute(
+            "SELECT * FROM user WHERE accountName=?", (accountName,))
+        user = cursor.fetchone()
+        currentUser = user
+
+        if user is not None:
+            byte_stored_password = user[4]
+            stored_password = byte_stored_password.decode('utf-8')
+            if bcrypt.checkpw(password.encode('utf-8'), stored_password.encode('utf-8')):
+                conn.close()
+                return jsonify({"success": True, "message": "Login successful"})
+
+        conn.close()
+        return jsonify({"success": False, "error": "Invalid email or password"})
+
     except Exception as e:
         return jsonify({"success": False, "error": str(e)})
 

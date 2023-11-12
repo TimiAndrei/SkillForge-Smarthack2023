@@ -118,7 +118,9 @@ def login():
         cursor.execute(
             "SELECT * FROM user WHERE accountName=?", (accountName,))
         user = cursor.fetchone()
-        currentUser = user
+        # currentUser = user
+        user = list(user)
+        currentUser = user(user[1], user[2], user[3], user[4], user[5], user[6], user[7], user[8], user[9], user[10], user[11], user[12], user[13])
 
         if user is not None:
             byte_stored_password = user[4]

@@ -14,7 +14,6 @@ import { HttpClient } from '@angular/common/http';
 
 export class AccountPageComponent implements OnInit {
 
-
   apiURL = 'http://127.0.0.1:5000/api/test';
   responseData: any;
 
@@ -64,8 +63,7 @@ export class AccountPageComponent implements OnInit {
   }
 
   goToDashboard() {
-    this.router.navigate(['/dashbooard']);
-    alert('Dashboard');
+    this.router.navigate(['/dashboard']);
   }
 
   logout() {

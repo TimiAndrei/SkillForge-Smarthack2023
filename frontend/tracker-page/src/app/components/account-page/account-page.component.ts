@@ -38,14 +38,14 @@ export class AccountPageComponent implements OnInit {
       display: false // Set this to false to hide the legend
     }
   };
-  radarChartLabels = ['Strength', 'Endurance', 'Speed', 'Agility', 'Flexibility'];
+  radarChartLabels = ['Coding', 'Reading', 'Cooking', 'Guitar', 'French'];
 
   radarChartData = [
     {
-      data: [80, 70, 20, 50, 35],
-      label: 'John Doe',
+      data: [100, 70, 20, 50, 75],
+      label: '',
       borderColor: '#3cba9f',
-      backgroundColor: 'rgba(60,186,159,0.2)',
+      backgroundColor: 'rgba(60,186,159,0.5)',
     },
   ];
 
@@ -61,7 +61,7 @@ export class AccountPageComponent implements OnInit {
 
   ngOnInit(): void {
     // this.http.get(this.apiURL)
-    //   .subscr  ibe((data: any) => {
+    //   .subscribe((data: any) => {
     //     this.responseData = data;
     //     console.log(this.responseData);
     //   });
@@ -70,7 +70,7 @@ export class AccountPageComponent implements OnInit {
     this.http.get('http://127.0.0.1:5000/api/get-user').subscribe((data: any) => {
 
       this.userName = data.currentUser.email;
-      
+
       console.log(data);
 
     })
@@ -86,13 +86,13 @@ export class AccountPageComponent implements OnInit {
 
         //strip the final part, after the last point
         this.errorMessage = this.errorMessage.substring(0, this.errorMessage.lastIndexOf('.'));
-        
-        console.log( this.errorMessage);
-        
+
+        console.log(this.errorMessage);
+
         // You can add more specific error handling logic here
       }
     );
-      
+
   }
 
   goToDashboard() {

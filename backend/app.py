@@ -144,3 +144,25 @@ def logout():
 
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/get-skills', methods=['GET'])
+def getSkills():
+    return currentUser.getSkills()
+
+@app.route('/api/get-quests', methods=['GET'])
+def getQuests():
+    quests = currentUser.getQuests()
+    progress = [(quest, quest.getProgress()) for quest in quests]
+    return progress
+
+@app.route('/api/get-difficulty-percentages', methods=['GET'])
+def getDifficultyPercentages():
+    return currentUser.getDifficultyPercentages()
+
+@app.route('/api/get-points-per-category', methods=['GET'])
+def getPointsPerCategory():
+    return currentUser.getPointsPerCategory()
+
+@app.route('/api/get-streak', methods=['GET'])
+def getStreak():
+    return currentUser.getStreak()

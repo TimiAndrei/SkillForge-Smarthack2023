@@ -37,6 +37,10 @@ class user:
         return self.level
     def getEmail(self):
         return self.email
+    def getSkills(self):
+        return self.skillList
+    def getQuests(self):
+        return self.questList
     def getCategories(self):
         uniqueCategories = []
         for item in self.skillList:
@@ -44,6 +48,16 @@ class user:
                 uniqueCategories.append(item.getCategory())
 
         return uniqueCategories
+
+    def getPointsPerCategory(self):
+        pointsPerCategory = {}
+        for item in self.skillList:
+            if item.getCategory() not in pointsPerCategory:
+                pointsPerCategory[item.getCategory()] = 0
+            pointsPerCategory[item.getCategory()] += item.getPoints()
+
+        return pointsPerCategory
+
     def resetStreak(self):
         if self.lastFinished < date.today() + timedelta(days=-2):
             self.streak = 0

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private http: HttpClient) { }
 
   picture: string = 'https://i.pravatar.cc/300';
 
@@ -111,5 +112,11 @@ export class DashboardComponent {
 
 
 
+  ngOnInit(): void {
+    this.http.get('http://localhost:5000/api/get-quests').subscribe((data: any) => {
+      console.log(data);
+      
+    })
+  }
 
 }

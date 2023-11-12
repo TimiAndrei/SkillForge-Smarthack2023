@@ -36,29 +36,29 @@
     <!-- accordion.component.html -->
 <div *ngFor="let item of accordionItems; let i = index" class="accordion-item">
   <h2 class="accordion-header" [id]="'heading' + i">
-    <button
-  class="accordion-button"
-  type="button"
-  [class.collapsed]="activeIndex !== i"
-  (click)="toggleAccordion(i)"
-  [attr.aria-expanded]="activeIndex === i ? 'true' : 'false'"
-  [attr.aria-controls]="'collapse' + i"
->
-  {{ item.title }}
-</button>
+      <button
+        class="accordion-button"
+        type="button"
+        [class.collapsed]="activeIndex !== i"
+        (click)="toggleAccordion(i)"
+        [attr.aria-expanded]="activeIndex === i ? 'true' : 'false'"
+        [attr.aria-controls]="'collapse' + i"
+      >
+    {{ item.title }}
+    </button>
 
   </h2>
-  <div
-  [id]="'collapse' + i"
-  class="accordion-collapse collapse"
-  [class.show]="activeIndex === i"
-  [attr.aria-labelledby]="'heading' + i"
-  data-bs-parent="#accordionExample"
->
-  <div class="accordion-body">
-    <strong>{{ item.content }}</strong>
-  </div>
-</div>
+    <div
+      [id]="'collapse' + i"
+      class="accordion-collapse collapse"
+      [class.show]="activeIndex === i"
+      [attr.aria-labelledby]="'heading' + i"
+      data-bs-parent="#accordionExample"
+      >
+        <div class="accordion-body">
+          <strong>{{ item.content }}</strong>
+        </div>
+    </div>
 
 
   

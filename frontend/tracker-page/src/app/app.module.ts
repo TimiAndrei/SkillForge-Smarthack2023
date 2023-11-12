@@ -8,6 +8,10 @@ import { AccountPageComponent } from './components/account-page/account-page.com
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgChartsModule } from 'ng2-charts';
+import { Login2Component } from './components/login2/login2.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +19,16 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     AccountPageComponent,
     LoginComponent,
     DashboardComponent,
+    Login2Component
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

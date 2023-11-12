@@ -1,56 +1,83 @@
-
 <div class="page">
-    
-    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
-        <div class="container-fluid">
-          <a class="navbar-brand">Tracker App</a>
-          <div class="collapse navbar-collapse" id="navbarColor01">
-                <div style="color: white;" class="nav-link active" (click)="goToDashboard()">Dashboard
-                </div>
-              
-          </div>
+
+  <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand">Tracker App</a>
+      <div class="collapse navbar-collapse" id="navbarColor01">
+        <div style="color: white;" class="nav-link active" (click)="goToDashboard()">Dashboard</div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div style="color: white; cursor: pointer;" class="nav-link active" (click)="logout()">Logout</div>
+      </div>
+
+
+      <div style="color: white;" class="nav-link active" (click)="goToDashboard()">John Doe: Level 5 </div>
+      <img src="{{picture}}">
+    </div>
+  </nav>
+
+
+
+  <div class="achivements" style="width: 100%; height: 45vh; ">
+    <h1 style="font-size: 2em; margin-top:5px; text-align:center"> Overview </h1>
+
+    <div class="overviewContent">
+
+
+      <div style="width: 21vw; height:40vh">
+        <canvas baseChart id="radarChart" [datasets]="radarChartData" [labels]="radarChartLabels" [options]="radarChartOptions" [type]="radarChartType"></canvas>
+      </div>
+
+
+
+      <div style="width: 35vw; height: 30vh;     background-image: linear-gradient(#0c1f4c 0%, #1a0933 80%, #1a0933 73%, #17082e 100%);
+            border-radius: 40px;  box-shadow: 0px 0px 5px 0px rgba(90, 90, 245, 0.75);">
+
+      </div>
+
+
+      <div class="pieChart" style="box-shadow: 0px 0px 500px 0px rgba(90, 90, 245, 0.75);">
+        <div class="hole" style="box-shadow: 0px 0px 10px 0px rgba(90, 90, 245, 0.75);">
+
+          <p style="color: #8af7b3 !important;"> Simple tasks: {{simpleTasks}}</p>
+          <p style="color: #ffda6a !important;"> Medium tasks: {{mediumTasks}}</p>
+          <p style="color: #ef9499 !important;"> Hard tasks: {{hardTasks}}</p>
+
         </div>
-      </nav>
+      </div>
 
-    
-
-    <div class="achivements" style="width: 100%; height: 45vh; ">
-        <h1 style="font-size: 2em; margin-top:5px; text-align:center"> Overview </h1>
-
-        <div class="overviewContent">
-
-
-            <!-- <radar></radar> -->
-
-
-
-            <div style="width: 40%; height: 30vh;     background-image: linear-gradient(#0c1f4c 0%, #1a0933 80%, #1a0933 73%, #17082e 100%);
-            border-radius: 40px;  box-shadow: 0px 0px 5px 0px rgba(90, 90, 245, 0.75);">                
-                
-            </div>
-
-
-            <div class="pieChart" style="box-shadow: 0px 0px 500px 0px rgba(90, 90, 245, 0.75);">
-                <div class="hole" style="box-shadow: 0px 0px 10px 0px rgba(90, 90, 245, 0.75);">
-
-                </div>
-            </div>
-
-
-        </div>
 
     </div>
-    
-    <div class="monthlyQuest" style="width: 100%; height: 42vh; ">
 
-        <h1 style="font-size: 2em; margin-top:5px; text-align:center">3-month Progress</h1>
+  </div>
 
-        <div class="monthRow" style="display:flex; gap:2vw; margin-left:2.5vw">
-            <div class="month">Last Month</div>
-            <div class="month">This Month</div>
-            <div class="month">Next Month</div>
+  <div class="monthlyQuest" style="width: 100%; height: 42vh; ">
 
-        </div>
+    <h1 style="font-size: 2em; margin-top:5px; text-align:center">3-month Progress</h1>
+
+    <div class="monthRow" style="display:flex; gap:2vw; margin-left:2.5vw">
+      <div class="month">Last Month</div>
+      <div class="month">This Month</div>
+      <div class="month">Next Month</div>
+
     </div>
-    
+
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+
+
+  </div>
+
 </div>

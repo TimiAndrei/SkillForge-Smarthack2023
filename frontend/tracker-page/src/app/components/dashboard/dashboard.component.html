@@ -1,65 +1,62 @@
 <div class="page">
 
-    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
-        <div class="container-fluid">
-          <a class="navbar-brand">Tracker App</a>
-          <div class="collapse navbar-collapse" id="navbarColor01">
-                <div id="navDash" style="color: white;" class="nav-link active" (click)="goToAccount()">Account</div>
-          </div>
-
-
-          <div style="color: white;" class="nav-link active" (click)="goToAccount()">John Doe: Level 5 </div>       
-          <img src="{{picture}}">
-        </div>
-    </nav>
-
-
-    <h1 style="color: white; text-align:center">Quest Books</h1>
-
-    <div style="display: flex; flex-direction:row; gap:10px ;overflow-x:scroll; border:1px solid white; padding:10px">
-
-        <div *ngFor="let questBook of questBooks" class="questBox" style= " justify-content:left; align-items:center; ">
-            <div class="card border-warning mb-2 mt-2" style="width: 300px;">
-                <div class="card-body">
-                    <h4 class="card-title">{{ questBook.name }}</h4>
-                    <p class="card-text">Skills: {{ questBook.skills.join(', ') }}</p>
-                    <p class="card-text">Progress: {{ questBook.progress * 100 }}%</p>
-                    <p class="card-text">Deadline: {{ questBook.deadline }}</p>
-                </div>
-            </div>
-        </div>
+  <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand">Tracker App</a>
+      <div class="collapse navbar-collapse" id="navbarColor01">
+        <div id="navDash" style="color: white;" class="nav-link active" (click)="goToAccount()">Account</div>
+      </div>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <div style="color: white; cursor: pointer;" class="nav-link active" (click)="goToSkill()">Add Skill</div>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <div style="color: white;" class="nav-link active" (click)="goToAccount()">John Doe: Level 5 </div>
+      <img src="{{picture}}">
     </div>
+  </nav>
 
-    <h1 style="color: white; text-align:center; margin-top:10px">Skills</h1>
 
-    
-    <!-- accordion.component.html -->
-<div *ngFor="let item of accordionItems; let i = index" class="accordion-item">
-  <h2 class="accordion-header" [id]="'heading' + i">
-      <button
-        class="accordion-button"
-        type="button"
-        [class.collapsed]="activeIndex !== i"
-        (click)="toggleAccordion(i)"
-        [attr.aria-expanded]="activeIndex === i ? 'true' : 'false'"
-        [attr.aria-controls]="'collapse' + i"
-      >
-    {{ item.title }}
-    </button>
+  <h1 style="color: white; text-align:center">Quest Books</h1>
 
-  </h2>
-    <div
-      [id]="'collapse' + i"
-      class="accordion-collapse collapse"
-      [class.show]="activeIndex === i"
-      [attr.aria-labelledby]="'heading' + i"
-      data-bs-parent="#accordionExample"
-      >
-        <div class="accordion-body">
-          <strong>{{ item.content }}</strong>
+  <div style="display: flex; flex-direction:row; gap:10px ;overflow-x:scroll; border:1px solid white; padding:10px">
+
+    <div *ngFor="let questBook of questBooks" class="questBox" style=" justify-content:left; align-items:center; ">
+      <div class="card border-warning mb-2 mt-2" style="width: 300px;">
+        <div class="card-body">
+          <h4 class="card-title">
+            {{ questBook.name }}
+          </h4>
+          <p class="card-text">Skills:
+            {{ questBook.skills.join(', ') }}
+          </p>
+          <p class="card-text">Progress:
+            {{ questBook.progress * 100 }}%
+          </p>
+          <p class="card-text">Deadline:
+            {{ questBook.deadline }}
+          </p>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <h1 style="color: white; text-align:center; margin-top:10px">Skills</h1>
+
+
+  <!-- accordion.component.html -->
+  <div *ngFor="let item of accordionItems; let i = index" class="accordion-item">
+    <h2 class="accordion-header" [id]="'heading' + i">
+      <button class="accordion-button" type="button" [class.collapsed]="activeIndex !== i" (click)="toggleAccordion(i)" [attr.aria-expanded]="activeIndex === i ? 'true' : 'false'" [attr.aria-controls]="'collapse' + i">
+        {{ item.title }}
+      </button>
+
+    </h2>
+    <div [id]="'collapse' + i" class="accordion-collapse collapse" [class.show]="activeIndex === i" [attr.aria-labelledby]="'heading' + i" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>
+          {{ item.content }}</strong>
+      </div>
     </div>
 
 
-  
-</div>
+
+  </div>

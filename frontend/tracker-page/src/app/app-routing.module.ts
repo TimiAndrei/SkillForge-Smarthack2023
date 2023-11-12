@@ -4,13 +4,15 @@ import { AccountPageComponent } from './components/account-page/account-page.com
 import { LoginComponent } from './components/login/login.component';
 import { Login2Component } from './components/login2/login2.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AddSkillComponent } from './components/add-skill/add-skill.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'account', component: AccountPageComponent },
   { path: 'login2', component: Login2Component },
-  { path: 'dashboard', component: DashboardComponent }
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'addSkill', component: AddSkillComponent }
 ];
 
 @NgModule({

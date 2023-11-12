@@ -26,6 +26,8 @@ def getDB():
 conn = sqlite3.connect('SHDB.db')
 cursor = conn.cursor()
 
+currentUser = None
+
 headers = {"Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZjNhN2U2M2YtOGNmZC00YWU3LWJjNjQtYWU3MGQ5NjQyZjI4IiwidHlwZSI6ImFwaV90b2tlbiJ9.y70icVcF9BQzlWB70xrKTlIosjnF-OqB0etLhmqTdjw"}
 
 
@@ -69,14 +71,33 @@ def getSkillSuggestion():
     return result['cohere']['generated_text']
 
 
-@app.route("/api/test", methods=["GET"])
-def test():
-    data = {
-        "name": "John Doe",
-        "level": 1,
-        "picture": "idk"
-    }
-    return data
+@app.route('/api/addSkill', methods=['POST'])
+def add_skill():
+    try:
+        skill_data = request.json
+
+        required_fields = ['name', 'category', 'difficulty',
+                           'points', 'approval', 'questLogID']
+        for field in required_fields:
+            if field not in skill_data:
+                return jsonify({'success': False, 'error': f'Missing required field: {field}'}), 400
+
+        conn, cursor = getDB()
+
+        cursor.execute('''INSERT INTO skill (name, category, difficulty, description, deadline, points, approval, questLogID) 
+                          VALUES (?, ?, ?, ?, ?, ?, ?, ?)''',
+                       (skill_data['name'], skill_data['category'], skill_data['difficulty'],
+                        skill_data.get('description', ''), skill_data.get(
+                            'deadline', None),
+                        skill_data['points'], skill_data['approval'], skill_data['questLogID']))
+
+        conn.commit()
+        conn.close()
+
+        return jsonify({'success': True, 'message': 'Skill added successfully'})
+
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)})
 
 
 @app.route("/api/register", methods=["POST"])
@@ -107,6 +128,7 @@ def register_user():
 @app.route("/api/login", methods=["POST"])
 def login():
     try:
+        global currentUser
         data = request.json
         accountName = data.get("accountName")
         password = data.get("password")
@@ -142,6 +164,11 @@ def logout():
 
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)})
+
+
+@app.route('/api/get-user', methods=['GET'])
+def getUser():
+    return jsonify(currentUser.__dict__)
 
 
 @app.route('/api/get-skills', methods=['GET'])

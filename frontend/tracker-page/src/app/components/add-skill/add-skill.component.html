@@ -1,0 +1,62 @@
+<div class="page" style="display: flex; justify-content: center; align-items: center;">
+  <div class="card border-primary mb-3" style="width: 30rem; margin-top: 2rem">
+    <div class="card-body">
+      <form [formGroup]="skillForm">
+        <fieldset>
+          <h4 class="card-title">Add Skill</h4>
+
+          <div class="form-group">
+            <label for="name" class="form-label mt-4">Skill Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter skill name" formControlName="name">
+          </div>
+
+          <div class="form-group">
+            <label for="category" class="form-label mt-4">Category</label>
+            <input type="text" class="form-control" id="category" placeholder="Enter category" formControlName="category">
+          </div>
+
+          <div class="form-group">
+            <label for="difficulty" class="form-label mt-4">Difficulty</label>
+            <input type="number" class="form-control" id="difficulty" placeholder="Enter difficulty" formControlName="difficulty">
+          </div>
+
+          <div class="form-group">
+            <label for="description" class="form-label mt-4">Description</label>
+            <textarea class="form-control" id="description" placeholder="Enter description" formControlName="description"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="deadline" class="form-label mt-4">Deadline</label>
+            <input type="date" class="form-control" id="deadline" formControlName="deadline">
+          </div>
+
+          <div class="form-group">
+            <label for="points" class="form-label mt-4">Points</label>
+            <input type="number" class="form-control" id="points" placeholder="Enter points" formControlName="points">
+          </div>
+
+          <div class="form-group">
+            <label for="approval" class="form-label mt-4">Approval</label>
+            <input type="number" class="form-control" id="approval" placeholder="Enter approval" formControlName="approval">
+          </div>
+
+          <!-- Assuming questLogID is selected from a list of available quest logs -->
+          <div class="form-group">
+            <label for="questLogID" class="form-label mt-4">Quest Log ID</label>
+            <select class="form-control" id="questLogID" formControlName="questLogID">
+              <!-- Populate this list dynamically with available quest logs -->
+              <option value="1">Quest Log 1</option>
+              <option value="2">Quest Log 2</option>
+              <!-- Add more options as needed -->
+            </select>
+          </div>
+
+          <br>
+          <button type="submit" class="btn btn-primary" (click)="addSkill()">Add Skill</button>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <button type="button" class="btn btn-primary" (click)="goToDashboard()">Cancel</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>

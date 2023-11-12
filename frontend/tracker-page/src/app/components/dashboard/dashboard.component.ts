@@ -19,6 +19,10 @@ export class DashboardComponent {
     this.router.navigate(['/account']);
   }
 
+  goToSkill() {
+    this.router.navigate(['/addSkill']);
+  }
+
 
   questBooks: any[] = [
     {
@@ -48,7 +52,7 @@ export class DashboardComponent {
       deadline: '2021-05-20',
       skills: ['Reading', 'Writing', 'Speaking', 'Listening']
 
-    },{
+    }, {
       name: 'The Alchemist',
       progress: 0.7,
       deadline: '2021-05-20',
@@ -61,25 +65,25 @@ export class DashboardComponent {
       deadline: '2021-05-20',
       skills: ['Reading', 'Writing', 'Speaking', 'Listening']
 
-    },{
+    }, {
       name: 'The Alchemist',
       progress: 0.7,
       deadline: '2021-05-20',
       skills: ['Reading', 'Writing', 'Speaking', 'Listening']
 
-    },{
+    }, {
       name: 'The Alchemist',
       progress: 0.7,
       deadline: '2021-05-20',
       skills: ['Reading', 'Writing', 'Speaking', 'Listening']
 
-    },{
+    }, {
       name: 'The Alchemist',
       progress: 0.7,
       deadline: '2021-05-20',
       skills: ['Reading', 'Writing', 'Speaking', 'Listening']
 
-    },{
+    }, {
       name: 'The Alchemist',
       progress: 0.7,
       deadline: '2021-05-20',
@@ -115,7 +119,7 @@ export class DashboardComponent {
   ngOnInit(): void {
     this.http.get('http://localhost:5000/api/get-quests').subscribe((data: any) => {
       console.log(data);
-      
+
     })
   }
 

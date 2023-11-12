@@ -29,70 +29,37 @@ export class DashboardComponent {
 
   questBooks: any[] = [
     {
-      name: 'The Alchemist',
+      name: 'Master New Language',
       progress: 0.5,
       deadline: '2021-05-20',
       skills: ['Reading', 'Writing', 'Speaking', 'Listening']
 
     },
     {
-      name: 'The Alchemist',
+      name: 'Coding Guru',
       progress: 0.6,
-      deadline: '2021-05-20',
-      skills: ['Reading', 'Writing', 'Speaking', 'Listening']
+      deadline: '2021-06-20',
+      skills: ['Development', 'Discipline', 'Problem solving', 'Teamwork']
 
     },
     {
-      name: 'The Alchemist',
-      progress: 0.7,
-      deadline: '2021-05-20',
-      skills: ['Reading', 'Writing', 'Speaking', 'Listening']
-
+      name: 'Cooking Master',
+      progress: 0.2,
+      deadline: '2021-07-20',
+      skills: ['Cooking fish', 'Baking croissant', 'Making sushi', 'Making pizza']
     },
     {
-      name: 'The Alchemist',
+      name: 'Guitar Master',
       progress: 0.7,
-      deadline: '2021-05-20',
-      skills: ['Reading', 'Writing', 'Speaking', 'Listening']
-
-    }, {
-      name: 'The Alchemist',
-      progress: 0.7,
-      deadline: '2021-05-20',
-      skills: ['Reading', 'Writing', 'Speaking', 'Listening']
-
+      deadline: '2021-08-15',
+      skills: ['Guitar', 'Music', 'Discipline', 'Teamwork']
     },
     {
-      name: 'The Alchemist',
-      progress: 0.7,
-      deadline: '2021-05-20',
-      skills: ['Reading', 'Writing', 'Speaking', 'Listening']
-
-    }, {
-      name: 'The Alchemist',
-      progress: 0.7,
-      deadline: '2021-05-20',
-      skills: ['Reading', 'Writing', 'Speaking', 'Listening']
-
-    }, {
-      name: 'The Alchemist',
-      progress: 0.7,
-      deadline: '2021-05-20',
-      skills: ['Reading', 'Writing', 'Speaking', 'Listening']
-
-    }, {
-      name: 'The Alchemist',
-      progress: 0.7,
-      deadline: '2021-05-20',
-      skills: ['Reading', 'Writing', 'Speaking', 'Listening']
-
-    }, {
-      name: 'The Alchemist',
-      progress: 0.7,
-      deadline: '2021-05-20',
-      skills: ['Reading', 'Writing', 'Speaking', 'Listening']
-
-    },
+      name: 'Pitching Master',
+      progress: 0.8,
+      deadline: '2021-08-20',
+      skills: ['Pitching', 'Discipline', 'Communication', 'Teamwork']
+    }
   ]
 
   
@@ -151,15 +118,15 @@ export class DashboardComponent {
 
   accordionItems = [
     {
-      title: 'Accordion Item #1',
-      content: 'This is the first item\'s accordion body.'
+      title: 'Reading',
+      content: "Reading is the ability to understand written text and extract meaning from it."
     },
     {
-      title: 'Accordion Item #2',
+      title: 'Writing',
       content: 'This is the second item\'s accordion body.'
     },
     {
-      title: 'Accordion Item #3',
+      title: 'Discipline',
       content: 'This is the third item\'s accordion body.'
     },
     {

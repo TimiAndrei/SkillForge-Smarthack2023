@@ -157,7 +157,10 @@ def getQuests():
 
 @app.route('/api/get-difficulty-percentages', methods=['GET'])
 def getDifficultyPercentages():
-    return currentUser.getDifficultyPercentages()
+    quests = currentUser.getQuests()
+    difficulties = [(quest, quest.getDifficultyPercentages()) for quest in quests]
+
+    return difficulties
 
 @app.route('/api/get-points-per-category', methods=['GET'])
 def getPointsPerCategory():
@@ -165,4 +168,5 @@ def getPointsPerCategory():
 
 @app.route('/api/get-streak', methods=['GET'])
 def getStreak():
-    return currentUser.getStreak()
+    print(currentUser.getStreak())
+    return [currentUser.getStreak()]

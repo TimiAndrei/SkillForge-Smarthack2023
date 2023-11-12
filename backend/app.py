@@ -16,8 +16,6 @@ from user import user
 app = Flask(__name__)
 CORS(app)
 
-currentUser = user('admin', 'admin', 'admin', 'admin', 'admin', 'admin')
-
 
 def getDB():
     conn = sqlite3.connect('SHDB.db')
@@ -112,20 +110,18 @@ def login():
         data = request.json
         accountName = data.get("accountName")
         password = data.get("password")
-
         conn, cursor = getDB()
 
         cursor.execute(
             "SELECT * FROM user WHERE accountName=?", (accountName,))
-        user = cursor.fetchone()
-        # currentUser = user
-        user = list(user)
-        currentUser = user(user[1], user[2], user[3], user[4], user[5], user[6], user[7], user[8], user[9], user[10], user[11], user[12], user[13])
+        db_user = cursor.fetchone()
 
-        if user is not None:
-            byte_stored_password = user[4]
+        if db_user is not None:
+            byte_stored_password = db_user[4]
             stored_password = byte_stored_password.decode('utf-8')
             if bcrypt.checkpw(password.encode('utf-8'), stored_password.encode('utf-8')):
+                currentUser = user(db_user[1], db_user[2], db_user[3], db_user[4], db_user[5], db_user[6],
+                                   db_user[7], db_user[8], db_user[9], db_user[10], db_user[11], db_user[12])
                 conn.close()
                 return jsonify({"success": True, "message": "Login successful"})
 
@@ -147,9 +143,11 @@ def logout():
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)})
 
+
 @app.route('/api/get-skills', methods=['GET'])
 def getSkills():
     return currentUser.getSkills()
+
 
 @app.route('/api/get-quests', methods=['GET'])
 def getQuests():
@@ -157,16 +155,20 @@ def getQuests():
     progress = [(quest, quest.getProgress()) for quest in quests]
     return progress
 
+
 @app.route('/api/get-difficulty-percentages', methods=['GET'])
 def getDifficultyPercentages():
     quests = currentUser.getQuests()
-    difficulties = [(quest, quest.getDifficultyPercentages()) for quest in quests]
+    difficulties = [(quest, quest.getDifficultyPercentages())
+                    for quest in quests]
 
     return difficulties
+
 
 @app.route('/api/get-points-per-category', methods=['GET'])
 def getPointsPerCategory():
     return currentUser.getPointsPerCategory()
+
 
 @app.route('/api/get-streak', methods=['GET'])
 def getStreak():

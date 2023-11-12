@@ -8,6 +8,8 @@ import { AccountPageComponent } from './components/account-page/account-page.com
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

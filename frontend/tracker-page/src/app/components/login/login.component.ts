@@ -22,6 +22,10 @@ export class LoginComponent {
     });
   }
 
+  redirectToLogin() {
+    this.router.navigate(['/login2']);
+  }
+
   async onSignUpClick() {
     if (this.signUpForm.valid) {
       const userData = this.signUpForm.value;

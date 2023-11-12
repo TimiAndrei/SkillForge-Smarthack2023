@@ -11,6 +11,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgChartsModule } from 'ng2-charts';
+import { Login2Component } from './components/login2/login2.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { NgChartsModule } from 'ng2-charts';
     AccountPageComponent,
     LoginComponent,
     DashboardComponent,
+    Login2Component
   ],
   imports: [
     HttpClientModule,

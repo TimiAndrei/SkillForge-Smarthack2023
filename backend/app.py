@@ -192,7 +192,11 @@ def getUser():
 
 @app.route('/api/get-skills', methods=['GET'])
 def getSkills():
-    return currentUser.getSkills()
+    skills = []
+    for item in currentUser.getSkills():
+        skills.append(item.getSkill())
+
+    return skills
 
 
 @app.route('/api/get-quests', methods=['GET'])

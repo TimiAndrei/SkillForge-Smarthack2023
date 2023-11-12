@@ -10,8 +10,9 @@
       </div>
 
 
-      <div style="color: white;" class="nav-link active" (click)="goToDashboard()">John Doe: Level 5 </div>
-      <img src="{{picture}}">
+      <div style="color: white;" class="nav-link active" (click)="goToDashboard()">{{userName}} &nbsp;: Level 5 </div>
+      &nbsp;&nbsp;
+      <img src="../../../assets/profile.jfif">
     </div>
   </nav>
 
@@ -31,7 +32,7 @@
 
       <div style="width: 35vw; height: 30vh;     background-image: linear-gradient(#0c1f4c 0%, #1a0933 80%, #1a0933 73%, #17082e 100%);
             border-radius: 40px;  box-shadow: 0px 0px 5px 0px rgba(90, 90, 245, 0.75);">
-
+      {{errorMessage}}
       </div>
 
 
@@ -61,19 +62,19 @@
 
     </div>
 
-    <div class="progress">
-      <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+    <div class="progress" style="margin-left: 5.5vw;">
+      <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 20%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
-    <div class="progress">
+    <div class="progress" style="margin-left: 15.5vw;">
       <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
-    <div class="progress">
-      <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+    <div class="progress" style="margin-left: 10.5vw;">
+      <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 70%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
-    <div class="progress">
+    <div class="progress" style="margin-left: 45.5vw;">
       <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
-    <div class="progress">
+    <div class="progress" style="margin-left: 7.5vw;">
       <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
 

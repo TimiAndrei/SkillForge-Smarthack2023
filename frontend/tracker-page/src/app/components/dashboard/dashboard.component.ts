@@ -126,6 +126,22 @@ export class DashboardComponent {
       console.log(data);
 
     })
+
+
+    // this.http.get('http://127.0.0.1:5000/api/get-quote').subscribe(
+    //   (data: any) => {
+    //     // Handle successful response
+    //     console.log('Data received:', data);
+    //   },
+    //   (error: any) => {
+    //     // Handle error
+    //     const errorMessage = error.error.text;
+    //     console.log( errorMessage);
+        
+    //     // You can add more specific error handling logic here
+    //   }
+    // );
+    
   }
 
 }

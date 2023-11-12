@@ -53,13 +53,46 @@ export class AccountPageComponent implements OnInit {
 
   constructor(private http: HttpClient, private router: Router) { }
 
+  errorMessage: string = '';
+
+
+
+  userName: string = '';
 
   ngOnInit(): void {
-    this.http.get(this.apiURL)
-      .subscribe((data: any) => {
-        this.responseData = data;
-        console.log(this.responseData);
-      });
+    // this.http.get(this.apiURL)
+    //   .subscr  ibe((data: any) => {
+    //     this.responseData = data;
+    //     console.log(this.responseData);
+    //   });
+
+
+    this.http.get('http://127.0.0.1:5000/api/get-user').subscribe((data: any) => {
+
+      this.userName = data.currentUser.email;
+      
+      console.log(data);
+
+    })
+
+    this.http.get('http://127.0.0.1:5000/api/get-quote').subscribe(
+      (data: any) => {
+        // Handle successful response
+        console.log('Data received:', data);
+      },
+      (error: any) => {
+        // Handle error
+        this.errorMessage = error.error.text;
+
+        //strip the final part, after the last point
+        this.errorMessage = this.errorMessage.substring(0, this.errorMessage.lastIndexOf('.'));
+        
+        console.log( this.errorMessage);
+        
+        // You can add more specific error handling logic here
+      }
+    );
+      
   }
 
   goToDashboard() {
@@ -75,6 +108,7 @@ export class AccountPageComponent implements OnInit {
       console.log(response);  // Log the API response
     });
   }
+
 }
 
 

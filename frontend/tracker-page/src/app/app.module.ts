@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgChartsModule } from 'ng2-charts';
 import { Login2Component } from './components/login2/login2.component';
 import { AddSkillComponent } from './components/add-skill/add-skill.component';
+import { AddQuestComponent } from './components/add-quest/add-quest.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AddSkillComponent } from './components/add-skill/add-skill.component';
     LoginComponent,
     DashboardComponent,
     Login2Component,
-    AddSkillComponent
+    AddSkillComponent,
+    AddQuestComponent
   ],
   imports: [
     HttpClientModule,

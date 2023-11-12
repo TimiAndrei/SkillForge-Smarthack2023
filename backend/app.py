@@ -100,6 +100,32 @@ def add_skill():
         return jsonify({'success': False, 'error': str(e)})
 
 
+@app.route('/api/addQuest', methods=['POST'])
+def add_quest():
+    try:
+        quest_data = request.json
+
+        # Validate the required fields
+        required_fields = ['name', 'description', 'userID']
+        for field in required_fields:
+            if field not in quest_data:
+                return jsonify({'success': False, 'error': f'Missing required field: {field}'}), 400
+
+        conn, cursor = getDB()
+
+        cursor.execute('''INSERT INTO questLog (name, description, userID) 
+                          VALUES (?, ?, ?)''',
+                       (quest_data['name'], quest_data.get('description', ''), quest_data['userID']))
+
+        conn.commit()
+        conn.close()
+
+        return jsonify({'success': True, 'message': 'Quest added successfully'})
+
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)})
+
+
 @app.route("/api/register", methods=["POST"])
 def register_user():
     try:

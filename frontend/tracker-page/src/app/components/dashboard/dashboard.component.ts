@@ -23,6 +23,9 @@ export class DashboardComponent {
     this.router.navigate(['/addSkill']);
   }
 
+  goToQuest() {
+    this.router.navigate(['/addQuest']);
+  }
 
   questBooks: any[] = [
     {
@@ -122,7 +125,7 @@ export class DashboardComponent {
     this.http.get('http://127.0.0.1:5000/api/get-user').subscribe((data: any) => {
 
       this.userName = data.currentUser.email;
-      
+
       console.log(data);
 
     })

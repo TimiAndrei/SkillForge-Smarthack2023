@@ -1,3 +1,5 @@
+from flask import request, jsonify
+import jwt  # For token generation
 import json
 import requests
 from flask import Flask
@@ -8,9 +10,14 @@ from flask import request
 from flask_cors import CORS
 import bcrypt
 import sqlite3
+import jwt
+from jwt import encode  # need to install pyjwt
+import user
 
 app = Flask(__name__)
 CORS(app)
+
+currentUser = User()
 
 
 def getDB():
@@ -98,3 +105,15 @@ def register_user():
         return jsonify({"success": True, "message": "User registered successfully"})
     except Exception as e:
         return jsonify({"success": False, "error": str(e)})
+
+
+@app.route('/api/logout', methods=['POST'])
+def logout():
+    global currentUser
+    try:
+        currentUser = None
+
+        return jsonify({'success': True, 'message': 'Logout successful'})
+
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)})

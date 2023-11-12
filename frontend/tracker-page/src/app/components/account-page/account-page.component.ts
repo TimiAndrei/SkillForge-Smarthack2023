@@ -42,7 +42,8 @@ export class AccountPageComponent implements OnInit {
   radarChartLabels = ['Strength', 'Endurance', 'Speed', 'Agility', 'Flexibility'];
 
   radarChartData = [
-    { data: [80, 70, 20, 50, 35], 
+    {
+      data: [80, 70, 20, 50, 35],
       label: 'John Doe',
       borderColor: '#3cba9f',
       backgroundColor: 'rgba(60,186,159,0.2)',
@@ -50,8 +51,8 @@ export class AccountPageComponent implements OnInit {
   ];
 
   radarChartType: ChartType = 'radar';
-  
-  constructor(private http: HttpClient , private router: Router) { }
+
+  constructor(private http: HttpClient, private router: Router) { }
 
 
   ngOnInit(): void {
@@ -65,6 +66,16 @@ export class AccountPageComponent implements OnInit {
   goToDashboard() {
     this.router.navigate(['/dashbooard']);
     alert('Dashboard');
+  }
+
+  logout() {
+    // Redirect to login page
+    this.router.navigate(['/login']);
+
+    // Send request to Flask API to clear current user
+    this.http.post('http://127.0.0.1:5000/api/logout', {}).subscribe(response => {
+      console.log(response);  // Log the API response
+    });
   }
 }
 

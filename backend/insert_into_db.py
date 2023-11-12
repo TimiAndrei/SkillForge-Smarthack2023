@@ -61,14 +61,14 @@ def insertUsers():
 
     insertQuery = ('''
         INSERT INTO user (firstName, lastName, accountName, organization, friendsList, points, 
-                          lastFinished, streak, level, needApproval)
-        VALUES ( ?, ? ,?, ?, ?, ?, ?, ?, ?, ?);
+                          lastFinished, streak, level, needApproval, email, password)
+        VALUES ( ?, ? ,?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
     ''')
 
     for pair in nameUsernamePairs:
         signUpTime = date.today() - timedelta(days = random.randint(0, 100))
         cursor.execute(insertQuery, (pair[0], pair[1], pair[2], 
-                                    "", "", 0, signUpTime, 0, 0, 0))
+                                    "", "", 0, signUpTime, 0, 0, 0, pair[2] + "@gmail.com", "pass"))
 
     output = cursor.execute(''' 
             SELECT * FROM user;        

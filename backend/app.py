@@ -168,7 +168,26 @@ def logout():
 
 @app.route('/api/get-user', methods=['GET'])
 def getUser():
-    return jsonify(currentUser.__dict__)
+    try:
+        user_dict = {
+            'fName': currentUser.fName,
+            'lName': currentUser.lName,
+            'accountName': currentUser.accountName,
+            'email': currentUser.email,
+            'organization': currentUser.organization,
+            'friendsList': currentUser.friendsList,
+            'points': currentUser.points,
+            'lastFinished': currentUser.lastFinished,
+            'streak': currentUser.streak,
+            'level': currentUser.level,
+            'skillList': currentUser.skillList,
+            'questList': currentUser.questList,
+            'needApproval': currentUser.needApproval
+        }
+
+        return jsonify({'success': True, 'currentUser': user_dict})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)})
 
 
 @app.route('/api/get-skills', methods=['GET'])

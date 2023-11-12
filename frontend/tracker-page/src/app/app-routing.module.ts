@@ -5,6 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 import { Login2Component } from './components/login2/login2.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AddSkillComponent } from './components/add-skill/add-skill.component';
+import { AddQuestComponent } from './components/add-quest/add-quest.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'account', component: AccountPageComponent },
   { path: 'login2', component: Login2Component },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'addSkill', component: AddSkillComponent }
+  { path: 'addSkill', component: AddSkillComponent },
+  { path: 'addQuest', component: AddQuestComponent }
 ];
 
 @NgModule({

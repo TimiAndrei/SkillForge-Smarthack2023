@@ -52,13 +52,12 @@ def getQuote():
 @app.route("/get-skill-suggestion")
 def getSkillSuggestion():
     url = "https://api.edenai.run/v2/text/generation"
+    categories = ""
+    for item in user.getCategories():
+        categories += item + ", "
     payload = {
         "providers": "cohere",
-        # TO DO: Gather the user categories and insert them in the query below
-        # categories = ""
-        # for item in user.getCategories():
-        #     categories += item + ", "
-        "text": "Show me some learning suggestions based on my needs:" + "" + ". Don't give me details about the suggestions, just the titles.",
+        "text": "Show me some learning suggestions based on my needs:" + categories + ". Don't give me details about the suggestions, just the titles.",
         "temperature": 0.9,
         "max_tokens": 300
     }
@@ -95,6 +94,32 @@ def add_skill():
         conn.close()
 
         return jsonify({'success': True, 'message': 'Skill added successfully'})
+
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)})
+
+
+@app.route('/api/addQuest', methods=['POST'])
+def add_quest():
+    try:
+        quest_data = request.json
+
+        # Validate the required fields
+        required_fields = ['name', 'description', 'userID']
+        for field in required_fields:
+            if field not in quest_data:
+                return jsonify({'success': False, 'error': f'Missing required field: {field}'}), 400
+
+        conn, cursor = getDB()
+
+        cursor.execute('''INSERT INTO questLog (name, description, userID) 
+                          VALUES (?, ?, ?)''',
+                       (quest_data['name'], quest_data.get('description', ''), quest_data['userID']))
+
+        conn.commit()
+        conn.close()
+
+        return jsonify({'success': True, 'message': 'Quest added successfully'})
 
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)})
@@ -192,7 +217,11 @@ def getUser():
 
 @app.route('/api/get-skills', methods=['GET'])
 def getSkills():
-    return currentUser.getSkills()
+    skills = []
+    for item in currentUser.getSkills():
+        skills.append(item.getSkill())
+
+    return skills
 
 
 @app.route('/api/get-quests', methods=['GET'])

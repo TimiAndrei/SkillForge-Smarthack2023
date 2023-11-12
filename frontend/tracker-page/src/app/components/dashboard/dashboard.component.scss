@@ -17,5 +17,8 @@ img{
 
 
 .accordion-body{
-    height: 200px;
+    // this should adapt to the content
+    height: 100%;
+    overflow: auto;
+
 }

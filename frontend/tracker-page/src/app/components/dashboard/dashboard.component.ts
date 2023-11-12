@@ -95,20 +95,7 @@ export class DashboardComponent {
     },
   ]
 
-  accordionItems = [
-    {
-      title: 'Accordion Item #1',
-      content: 'This is the first item\'s accordion body.'
-    },
-    {
-      title: 'Accordion Item #2',
-      content: 'This is the second item\'s accordion body.'
-    },
-    {
-      title: 'Accordion Item #3',
-      content: 'This is the third item\'s accordion body.'
-    }
-  ];
+  
 
   activeIndex: number | null = null;
 
@@ -117,6 +104,7 @@ export class DashboardComponent {
   }
 
 
+  errorMessage: string = '';
 
 
   userName: string = '';
@@ -130,21 +118,54 @@ export class DashboardComponent {
 
     })
 
+    this.http.get('http://127.0.0.1:5000/get-skill-suggestion').subscribe(
+      (data: any) => {
+        // Handle successful response
+        console.log('Data received:', data);
+      },
+      (error: any) => {
+        // Handle error
+        this.errorMessage = error.error.text;
 
-    // this.http.get('http://127.0.0.1:5000/api/get-quote').subscribe(
-    //   (data: any) => {
-    //     // Handle successful response
-    //     console.log('Data received:', data);
-    //   },
-    //   (error: any) => {
-    //     // Handle error
-    //     const errorMessage = error.error.text;
-    //     console.log( errorMessage);
+        console.log( this.errorMessage);
+
+
+        //find out the last index of accordion items, and set its title to the error message
+        let lastItemIndex = this.accordionItems.length - 1;
+        // the title should be everything until the second " character
+        let title = this.errorMessage.substring(0, this.errorMessage.indexOf('"', 2) + 1);
+        // the content should be everything after the second " character
+        let content = this.errorMessage.substring(this.errorMessage.indexOf('"', 2) + 1);
         
-    //     // You can add more specific error handling logic here
-    //   }
-    // );
-    
+        this.accordionItems[lastItemIndex].content = content;
+
+
+
+
+        
+      }
+    );
+
   }
+
+
+  accordionItems = [
+    {
+      title: 'Accordion Item #1',
+      content: 'This is the first item\'s accordion body.'
+    },
+    {
+      title: 'Accordion Item #2',
+      content: 'This is the second item\'s accordion body.'
+    },
+    {
+      title: 'Accordion Item #3',
+      content: 'This is the third item\'s accordion body.'
+    },
+    {
+      title: 'More Suggestions',
+      content: 'Waiting for more suggestions...'
+    }
+  ];
 
 }

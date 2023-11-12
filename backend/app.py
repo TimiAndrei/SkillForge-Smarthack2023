@@ -52,9 +52,9 @@ def getQuote():
 @app.route("/get-skill-suggestion")
 def getSkillSuggestion():
     url = "https://api.edenai.run/v2/text/generation"
-    categories = ""
-    for item in user.getCategories():
-        categories += item + ", "
+    categories = "C++, cooking, business"
+    # for item in user.getCategories():
+    #     categories += item + ", "
     payload = {
         "providers": "cohere",
         "text": "Show me some learning suggestions based on my needs:" + categories + ". Don't give me details about the suggestions, just the titles.",

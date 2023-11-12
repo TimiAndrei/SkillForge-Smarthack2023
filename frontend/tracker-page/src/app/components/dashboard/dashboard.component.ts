@@ -116,8 +116,13 @@ export class DashboardComponent {
 
 
 
+  userName: string = '';
+
   ngOnInit(): void {
-    this.http.get('http://localhost:5000/api/get-quests').subscribe((data: any) => {
+    this.http.get('http://127.0.0.1:5000/api/get-user').subscribe((data: any) => {
+
+      this.userName = data.currentUser.email;
+      
       console.log(data);
 
     })

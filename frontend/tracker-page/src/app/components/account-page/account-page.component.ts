@@ -62,8 +62,7 @@ export class AccountPageComponent implements OnInit {
   }
 
   goToDashboard() {
-    this.router.navigate(['/dashbooard']);
-    alert('Dashboard');
+    this.router.navigate(['/dashboard']);
   }
 }
 
